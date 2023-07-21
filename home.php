@@ -11,7 +11,7 @@
             text-align: center;
             color: white;
         }
-        .box{
+        .box{ 
             position: absolute;
             top: 50%;
             left: 50%;

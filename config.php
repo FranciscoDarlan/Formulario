@@ -4,17 +4,19 @@
 $dbHost = 'Localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName = 'formulario-darlan';
+$dbName = 'criandonomebasedados';
 
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+$conexao = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 
-/*
-if($conexao->connect_errno){
-echo "Erro";
-}else{
-echo"Conexão efetuada com secesso";
-}
-*/
+
+// IF DE TESTE DE CONEXÃO:
+
+// if($conexao->connect_errno){    
+// echo "Erro";
+// }else{
+// echo"Conexão com BANCO DE DADOS efetuada com secesso ";
+// }
+
 
 
 ?>

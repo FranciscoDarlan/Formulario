@@ -1,10 +1,9 @@
 <?php
 
-if(isset($_POST['submit']))
-{
-/*
-print_r("name:".$_POST['name']);
-print_r('<br>');
+if (isset($_POST['submit'])) {
+    /*
+print_r("name:".$_POST['name']);             FAZ APARECER AS INFORMAÇÕES NA MESMA TELA 
+print_r('<br>');                             BR - QUEBRA DE LINHA
 print_r(($_POST['email']));
 print_r('<br>');
 print_r(($_POST['senha']));
@@ -23,22 +22,23 @@ print_r(($_POST['endereco']));
 print_r('<br>');
 */
 
-include_once('config.php');
+    include_once('config.php');           // AQUI CONSIGO INCLUIR A CONEXÃO - config.php
 
-$nome = $_POST['name'];
-$email = $_POST['email'];
-$senha = $_POST['senha'];
-$telefone = $_POST['telefone'];
-$sexo = $_POST['genero'];
-$data_nascimento = $_POST['data_nascimento'];
-$cidade = $_POST['cidade'];
-$estado = $_POST['estado'];
-$endereco = $_POST['endereco'];
+    $nome = $_POST['name'];               //AQUI ESTOU GUARDANDO AS INFORMAÇÕES DO FORMULARIO NA VARIAVEL.
+    $senha = $_POST['senha'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $sexo = $_POST['genero'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $endereco = $_POST['endereco'];
 
 
-$result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha,telefone,sexo,data_nasc,cidade,estado,endereco) )
- VALUES ('$nome','$email','$senha''$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco'");
+    $result = "INSERT INTO nova_tabela_base_dados(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco) VALUES ('$nome','$senha','$email','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco', NOW())";
 
+    $resultado_usuario = mysqli_query($conexao, $result);
+    echo "$resultado_usuario";
 }
 
 
@@ -115,18 +115,20 @@ $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha,telefone
         }
 
         @media screen and (max-width: 880px) {
-            .box{
+            .box {
                 width: 46%;
             }
         }
-        #data_nascimento{
+
+        #data_nascimento {
             border: none;
             padding: 8px;
             border-radius: 10px;
             outline: none;
             font-size: 15px;
         }
-        #submit{
+
+        #submit {
             background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
             width: 100%;
             border: none;
@@ -137,14 +139,13 @@ $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha,telefone
             border-radius: 10px;
         }
 
-        #submit:hover{
+        #submit:hover {
             background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
         }
 
-        #submit:active{
+        #submit:active {
             opacity: .5;
         }
-
     </style>
 </head>
 
@@ -172,7 +173,7 @@ $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha,telefone
                         <input type="tel" name="telefone" id="telefone" class="inputUser" required>
                         <label for="senha" class="labelInput">Telefone:</label>
                     </div>
-                   
+
                     <p>Sexo:</p>
                     <input type="radio" id="feminino" name="genero" value="feminino" required>
                     <label for="feminino">Feminino</label>
@@ -185,8 +186,8 @@ $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha,telefone
                     <br><br>
 
                     <label for="data_nascimento"><b>Data de Nascimento:</b></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" required>
-                    
+                    <input type="date" name="data_nascimento" id="data_nascimento" required>
+
                     <br><br>
                     <div class="inputBox">
                         <input type="text" name="cidade" id="cidade" class="inputUser" required>

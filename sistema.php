@@ -11,7 +11,7 @@ print_r($_SESSION);  // mostra na tela
     <title>SISTEMA | GN</title>
 
     <style>
-        body{
+        body{ 
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(to right, rgb(20,147,220), rgb(17,54,71));
         }
