@@ -1,56 +1,10 @@
-<?php
-
-if (isset($_POST['submit'])) {
-    /*
-print_r("name:".$_POST['name']);             FAZ APARECER AS INFORMAÇÕES NA MESMA TELA 
-print_r('<br>');                             BR - QUEBRA DE LINHA
-print_r(($_POST['email']));
-print_r('<br>');
-print_r(($_POST['senha']));
-print_r('<br>');
-print_r(($_POST['telefone']));
-print_r('<br>');
-print_r(($_POST['genero']));
-print_r('<br>');
-print_r(($_POST['data_nascimento']));
-print_r('<br>');
-print_r(($_POST['cidade']));
-print_r('<br>');
-print_r(($_POST['estado']));
-print_r('<br>');
-print_r(($_POST['endereco']));
-print_r('<br>');
-*/
-
-    include_once('config.php');           // AQUI CONSIGO INCLUIR A CONEXÃO - config.php
-
-    $nome = $_POST['name'];               //AQUI ESTOU GUARDANDO AS INFORMAÇÕES DO FORMULARIO NA VARIAVEL.
-    $senha = $_POST['senha'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $sexo = $_POST['genero'];
-    $data_nascimento = $_POST['data_nascimento'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-    $endereco = $_POST['endereco'];
-
-
-    $result = "INSERT INTO nova_tabela_base_dados(nome, senha, email, telefone, sexo, data_nasc, cidade, estado, endereco) VALUES ('$nome','$senha','$email','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco', NOW())";
-
-    $resultado_usuario = mysqli_query($conexao, $result);
-    echo "$resultado_usuario";
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
+    <title>formulario</title>
 
     <style>
         body {
@@ -74,7 +28,7 @@ print_r('<br>');
             border: 3px solid dodgerblue;
         }
 
-        legend {
+        h1 {
             border: 1px solid dodgerblue;
             padding: 10px;
             text-align: center;
@@ -128,7 +82,7 @@ print_r('<br>');
             font-size: 15px;
         }
 
-        #submit {
+        #button {
             background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
             width: 100%;
             border: none;
@@ -139,22 +93,26 @@ print_r('<br>');
             border-radius: 10px;
         }
 
-        #submit:hover {
+        #button:hover {
             background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
         }
 
-        #submit:active {
+        #button:active {
             opacity: .5;
         }
     </style>
 </head>
 
 <body>
+
     <div class="box">
-        <form action="formulario.php" method="POST">
+
+
+        <form action="processa.php" method="POST">
             <fieldset>
-                <legend><b>Formulário de Cliente</b></legend>
+                <h1><b>Formulário de Cliente</b></h1>
                 <br>
+
                 <div class="inputBox">
                     <input type="text" name="name" id="name" class="inputUser" required>
                     <label for="name" class="labelInput">Nome completo:</label>
@@ -204,10 +162,11 @@ print_r('<br>');
                         <label for="endereco" class="labelInput">Endereço:</label>
                     </div>
                     <br><br>
-                    <input type="submit" name="submit" id="submit">
+                    <input type="submit" name="submit" id="button">
             </fieldset>
         </form>
     </div>
+
 </body>
 
 </html>
